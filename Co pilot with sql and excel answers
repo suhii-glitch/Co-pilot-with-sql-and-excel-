@@ -1,0 +1,139 @@
+-- Copilot with SQL and Excel Assignment Solution
+-- PwSkills
+
+-- ============================================================
+-- Copilot with SQL
+-- ============================================================
+
+-- Question 1:
+-- Use Github Copilot to create a table SalesData whose columns are
+-- CustomerID, Name, Age, City, PurchaseAmount, PurchaseDate
+-- and insert 10,000 rows of random data.
+
+-- Answer:
+
+CREATE TABLE SalesData (
+    CustomerID INT,
+    Name VARCHAR(100),
+    Age INT,
+    City VARCHAR(50),
+    PurchaseAmount DECIMAL(10,2),
+    PurchaseDate DATE
+);
+
+-- Random data insertion can be generated using GitHub Copilot
+-- with INSERT INTO statements and SQL functions like NEWID(),
+-- RAND(), and ROW_NUMBER().
+
+-- ============================================================
+
+-- Question 2:
+-- Find total sales per city and top 5 cities by revenue.
+
+-- Answer:
+
+SELECT
+    City,
+    SUM(PurchaseAmount) AS TotalSales
+FROM SalesData
+GROUP BY City;
+
+SELECT TOP 5
+    City,
+    SUM(PurchaseAmount) AS Revenue
+FROM SalesData
+GROUP BY City
+ORDER BY Revenue DESC;
+
+-- ============================================================
+
+-- Question 3:
+-- Find customers with purchases above average.
+
+-- Answer:
+
+SELECT *
+FROM SalesData
+WHERE PurchaseAmount >
+(
+    SELECT AVG(PurchaseAmount)
+    FROM SalesData
+);
+
+-- ============================================================
+-- Copilot in Excel
+-- ============================================================
+
+-- Question 4:
+-- Identify and handle missing values in the dataset using Copilot.
+
+-- Answer:
+-- Excel Copilot can identify blank or null cells and suggest:
+-- 1. Filling missing values with average/mode
+-- 2. Replacing blanks with default values
+-- 3. Removing incomplete rows
+
+-- ============================================================
+
+-- Question 5:
+-- Identify duplicate rows and remove duplicates.
+
+-- Answer:
+-- Excel Copilot can detect duplicate rows and remove them
+-- using the Remove Duplicates feature in Excel.
+
+-- ============================================================
+
+-- Question 6:
+-- Generate column/bar chart and interpret highest sales region.
+
+-- Answer:
+-- A column chart can be generated using Region and Sales columns.
+-- The region with the tallest bar represents the highest sales.
+
+-- ============================================================
+
+-- Question 7:
+-- Create a pivot table showing total sales by region and product.
+
+-- Answer:
+-- Pivot Table Configuration:
+-- Rows    → Region
+-- Columns → Product
+-- Values  → Sum of Sales
+
+-- ============================================================
+
+-- Question 8:
+-- Generate calculated column Total Sales.
+
+-- Answer:
+-- Formula used in Excel:
+
+-- =Quantity * Price
+
+-- ============================================================
+
+-- Question 9:
+-- Summarize dataset and identify key insights.
+
+-- Answer:
+-- 1. Highest sales region contributes maximum revenue.
+-- 2. Some products perform better than others.
+-- 3. Missing values and duplicates affect data quality.
+-- 4. Pivot tables help summarize regional performance.
+
+-- ============================================================
+
+-- Question 10:
+-- Generate VBA code for cleaning data.
+
+-- Answer:
+
+Sub CleanData()
+
+    Cells.RemoveDuplicates Columns:=Array(1,2,3), Header:=xlYes
+
+    Cells.SpecialCells(xlCellTypeBlanks).Value = 0
+
+End Sub
